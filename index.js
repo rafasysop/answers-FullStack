@@ -3,12 +3,12 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-  const nome = 'rafa'
-  const lang = 'Javascript'
+app.get('/:user?/:lang?', (req, res) => {
+  const { nome } = req.params
+  const { lang } = req.params
   res.render("index", {
-    nome,
-    lang
+    nome: nome || 'Gulmine',
+    lang: lang || 'JavaScript'
   })
 })
 
