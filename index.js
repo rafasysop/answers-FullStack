@@ -3,7 +3,14 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => res.render("index"))
+app.get('/', (req, res) => {
+  const nome = 'rafa'
+  const lang = 'Javascript'
+  res.render("index", {
+    nome,
+    lang
+  })
+})
 
 
 app.listen(5005,(err) => {
