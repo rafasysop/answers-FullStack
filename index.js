@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs')
 
-app.get('/:user?/:lang?', (req, res) => {
+app.get('/:nome?/:lang?', (req, res) => {
   const { nome } = req.params
   const { lang } = req.params
   res.render("index", {
