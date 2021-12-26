@@ -5,17 +5,17 @@
     <div class="container-xl">
       <div class="card">
         <div class="card-header"><h3>Realizar Pergunta</h3></div>
-        <div class="card-body">
-              <form>
+          <div class="card-body">
+              <form method="post" action="/save-ask" >
                 <label for="">Titulo</label>
-                <input id='titulo' type="text" placeholder="Titulo" class="form-control">
+                <input id='titulo' name='titulo' type="text" placeholder="Titulo" class="form-control">
                 <br>
                 <label for="">Descrição</label>
-                <textarea id='desc' placeholder="Realize sua Pergunta!" class="form-control"></textarea>
+                <textarea id='desc' name='desc' placeholder="Realize sua Pergunta!" class="form-control"></textarea>
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">Enviar Pergunta</button>
               </form>
-            </div>
+          </div>
         </div>
       </div>
   <%- include('./partials/footer') %>
