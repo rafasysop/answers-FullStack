@@ -3,7 +3,12 @@
 <div class="container-xl">
       <div class="card">
         <div class="card-header center"><h1>Perguntas e Respostas</h1></div>
-        <div class="card-body">ola</div>
+        <p class="card-title">Ultimas 10 Perguntas</p>
+        <div class="card-body"><% asks.forEach(ask => {%>
+          <ul>
+            <li class="asks"><%= ask.titulo %></li>
+          </ul>
+        <% }) %></div>
       </div>
     </div>
 <%- include('./partials/footer') %>

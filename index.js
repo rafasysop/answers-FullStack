@@ -1,5 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const conection = require('./database/database');
+const AsksModels = require('./database/AsksModels');
+
+conection
+  .authenticate()
+  .then(() => {
+    console.log('Conectado no Banco de Dados:', process.env.MYSQL_HOST);
+    AsksModels.sync({ force: false }).then(()=>{})
+  })
+  .catch((e) => {
+    console.log('Erro ao conectar no Banco', e);
+  })
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -14,6 +26,7 @@ app.get('/', (req, res) => {
     status: res.statusCode,
     date: new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'long'}).format(new Date()),
     message: 'Bem Vindo ao Servidor Rafael Moura',
+    repositoryGitHub: 'https://github.com/rafasysop/answers-FullStack',
     site: `http://${req.headers.host}/site`,
     api: `http://${req.headers.host}/api`,
 
@@ -26,7 +39,10 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/site', (req, res) => {
-  return res.render('index')
+  AsksModels.findAll({ raw: true, limit: 10, order: [['id', 'DESC']]})
+    .then((asks) => {
+    return res.render('index', { asks })
+    })
 })
 
 app.get('/perguntar', (req, res) => {
@@ -34,7 +50,20 @@ app.get('/perguntar', (req, res) => {
 })
 
 app.post('/save-ask', (req, res) => {
-  return res.json({ status: 'ok', newAsk: req.body })
+  const {titulo, desc} = req.body 
+  AsksModels.create({
+    titulo,
+    desc
+  }).then(()=>{
+    /*
+    return res.status(201).json({ 
+      status: 201,
+      message: 'Pergunta Criada com Sucesso',
+      newAsk: req.body 
+    })*/
+    res.redirect('/site')
+  }).catch((err) => res.status(400)
+    .json({ status: 400, error: err.message }))
 })
 
 
