@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/site', (req, res) => {
-  AsksModels.findAll({ raw: true, limit: 10, order: [['id', 'DESC']]})
+  AsksModels.findAll({ raw: true, limit: 5, order: [['id', 'DESC']]})
     .then((asks) => {
     return res.render('index', { asks })
     })

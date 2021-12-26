@@ -3,11 +3,14 @@
 <div class="container-xl">
       <div class="card">
         <div class="card-header center"><h1>Perguntas e Respostas</h1></div>
-        <p class="card-title">Ultimas 10 Perguntas</p>
+        <p class="card-title">Ultimas 5 Perguntas</p>
         <div class="card-body"><% asks.forEach(ask => {%>
-          <ul>
-            <li class="asks"><%= ask.titulo %></li>
-          </ul>
+          <div id=<%= ask.id %> class="card">
+            <div class="card-body">
+              <%= ask.titulo %>
+            </div>
+            <div class="card-footer"><button class="btn-small btn-primary">Responder</button></div>
+          </div>
         <% }) %></div>
       </div>
     </div>
