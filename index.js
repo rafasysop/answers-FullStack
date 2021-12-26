@@ -14,15 +14,15 @@ app.get('/', (req, res) => {
     api: `http://${req.headers.host}/api`,
 
   }
-  res.status(200).json(resp)
+  return res.status(200).json(resp)
 })
 
 app.get('/api', (req, res) => {
-  res.status(200).json({ apiVersion: '1.0' })
+  return res.status(200).json({ apiVersion: '1.0' })
 })
 
 app.get('/site', (req, res) => {
-  res.render('index')
+  return res.render('index')
 })
 
 
