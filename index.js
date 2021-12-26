@@ -25,6 +25,10 @@ app.get('/site', (req, res) => {
   return res.render('index')
 })
 
+app.get('/perguntar', (req, res) => {
+  return res.render('perguntar')
+})
+
 
 app.listen(5005,(err) => {
   if (!err) return console.log('Servidor Iniciado');

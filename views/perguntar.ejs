@@ -9,21 +9,26 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-primary">
-      <div class="navbar-brand">
-        <a href="/site">Home</a>
-      </div>
-      <a href="/perguntar"><button class="btn btn-success">Fazer uma Pergunta</button> </a>
+    <nav class="navbar navbar-light bg-light">
+      <a href="/site">Home</a>
     </nav>
     <div class="container">
-
+      
       <div class="card">
-        <div class="card-header"><h1>Perguntas e Respostas</h1></div>
-        <div class="card-body">ola</div>
+        <div class="card-header"><h3>Realizar Pergunta</h3></div>
+        <div class="card-body">
+              <form>
+                <label for="">Titulo</label>
+                <input id='titulo' type="text" placeholder="Titulo" class="form-control">
+                <br>
+                <label for="">Descrição</label>
+                <textarea id='desc' placeholder="Realize sua Pergunta!" class="form-control"></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar Pergunta</button>
+              </form>
+            </div>
+        </div>
       </div>
-    </div>
-    
-
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
