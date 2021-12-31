@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const conection = require('./database/database');
 const AsksModels = require('./database/AsksModels');
 
+const portServer = 5005
+
 conection
   .authenticate()
   .then(() => {
@@ -66,8 +68,17 @@ app.post('/save-ask', (req, res) => {
     .json({ status: 400, error: err.message }))
 })
 
+app.get('/pergunta/:id', (req, res) => {
+  const { id } = req.params
+  AsksModels.findOne({ where: { id } })
+    .then((ask) => {
+      if (!ask) return res.redirect('/site')
+      return res.render('pergunta', { ask })
+    })
+})
 
-app.listen(5005,(err) => {
-  if (!err) return console.log('Servidor Iniciado');
+
+app.listen(portServer,(err) => {
+  if (!err) return console.log(`Servidor Iniciado na porta: ${portServer}`);
   return console.log('Erro:', err);
 })

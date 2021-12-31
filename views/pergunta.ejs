@@ -1,0 +1,21 @@
+
+  <%- include('./partials/header') %>
+  <%- include('./partials/navbar') %>
+   
+    <div class="container-xl">
+      <div class="card">
+        <div class="card-header"><h3>Responder a Pergunta</h3></div>
+          <div class="card-body">
+              <form id='formAsk' method="post" action="/save-ask"  >
+                <label for="">Pergunta:</label>
+                <h2><%= ask.titulo %></h2>
+                <br>
+                <label for="">Descrição:</label>
+                <p><%= ask.desc %></p>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Enviar Pergunta</button>
+              </form>
+          </div>
+        </div>
+      </div>
+  <%- include('./partials/footer') %>
