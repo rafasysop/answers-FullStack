@@ -6,15 +6,31 @@
       <div class="card">
         <div class="card-header"><h3>Responder a Pergunta</h3></div>
           <div class="card-body">
-              <form id='formAsk' method="post" action="/save-ask"  >
-                <label for="">Pergunta:</label>
-                <h2><%= ask.titulo %></h2>
-                <br>
-                <label for="">Descrição:</label>
-                <p><%= ask.desc %></p>
-                <br>
-                <button type="submit" class="btn btn-primary btn-block">Enviar Pergunta</button>
-              </form>
+            <label for="">Pergunta:</label>
+            <h2><%= ask.titulo %></h2>
+            <br>
+            <label for="">Descrição:</label>
+            <p><%= ask.desc %></p>
+            <br>
+            <pre class="blockquote-footer text-right">Criada em: <%= criado %></pre>
+            <hr>
+            <br>
+            <form id='formResponse' method="post" action="/save-response"  >
+              <label for="response">Responda: </label>
+              <textarea name="response" required class="response-text" id="response" rows="10" placeholder="Digite Sua Resposta..."></textarea>
+              <br>
+              <input type="hidden" required name="ask" value='<%= ask.id %>'>
+              <button class="btn btn-primary btn-lg text-right">Enviar Resposta</button>
+            </form>
+            <hr>
+            <h4>Outras Respostas</h4>
+            <% responses.forEach(resp => {%>
+              <hr>
+                <div>
+                 <strong>Resposta <%= resp.id %>:</strong> <%= resp.body %> <br>
+                </div>
+                <hr>
+            <% }) %>
           </div>
         </div>
       </div>

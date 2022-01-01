@@ -31,3 +31,7 @@ ul {
   box-shadow: 0 0 16px rgba(0,0,0,.2);
   margin: 10px 0;
 }
+
+.response-text {
+  width: 90%;
+}
