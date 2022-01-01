@@ -24,10 +24,10 @@
             </form>
             <hr>
             <h4>Outras Respostas</h4>
-            <% responses.forEach(resp => {%>
+            <% responses.forEach((resp, idx) => {%>
               <hr>
                 <div>
-                 <strong>Resposta <%= resp.id %>:</strong> <%= resp.body %> <br>
+                 <strong>Resposta <%= (idx + 1) %>:</strong> <%= resp.body %> <br>
                 </div>
                 <hr>
             <% }) %>
