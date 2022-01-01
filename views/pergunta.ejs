@@ -28,6 +28,8 @@
               <hr>
                 <div>
                  <strong>Resposta <%= (idx + 1) %>:</strong> <%= resp.body %> <br>
+            <pre class="blockquote-footer text-right">Criada em: <%= (Intl.DateTimeFormat('pt-BR',{ dateStyle: 'short', timeStyle: 'short' }).format(resp.createdAt) )%></pre>
+
                 </div>
                 <hr>
             <% }) %>

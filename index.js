@@ -72,16 +72,17 @@ app.post('/save-ask', (req, res) => {
 
 app.get('/pergunta/:id', (req, res) => {
   const { id } = req.params
-  let responses = new Array
-
-  ResponseModels.findAll({ where: { AskId: id }, order: [['id', 'DESC']] }).then((arr) => {
-    responses.push(...arr)
-  })
-
-  AsksModels.findOne({ where: { id }})
+   AsksModels.findOne({ where: { id }})
     .then((ask) => {
       if (!ask) return res.redirect('/site')
-      return res.render('pergunta', { ask, responses, criado: Intl.DateTimeFormat('pt-BR',{ dateStyle: 'full', timeStyle: 'long' }).format(ask.createdAt) })
+      ResponseModels.findAll({ where: { AskId: id }, order: [['id', 'DESC']] })
+        .then((responses) => {
+        return res.render('pergunta', {
+          ask,
+          responses,
+          criado: Intl.DateTimeFormat('pt-BR',{ dateStyle: 'short', timeStyle: 'short' }).format(ask.createdAt)
+        })
+      })
     })
 
 })
